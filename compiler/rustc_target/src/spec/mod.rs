@@ -1815,6 +1815,7 @@ supported_targets! {
     ("x86_64-pc-cygwin", x86_64_pc_cygwin),
 
     ("x86_64-unknown-linux-gnuasan", x86_64_unknown_linux_gnuasan),
+    ("x86_64-pc-lilium-std", x86_64_pc_lilium_std),
 }
 
 /// Cow-Vec-Str: Cow<'static, [Cow<'static, str>]>
