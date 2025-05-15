@@ -13,6 +13,7 @@ pub(crate) mod hurd;
 pub(crate) mod hurd_gnu;
 pub(crate) mod illumos;
 pub(crate) mod l4re;
+pub(crate) mod lilium;
 pub(crate) mod linux;
 pub(crate) mod linux_gnu;
 pub(crate) mod linux_musl;
