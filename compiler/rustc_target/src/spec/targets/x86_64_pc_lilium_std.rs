@@ -10,7 +10,8 @@ pub(crate) fn target() -> Target {
     base.stack_probes = StackProbeType::Inline;
     base.static_position_independent_executables = true;
 
-    base.linker_flavor = LinkerFlavor::Gnu(Cc::No, Lld::No);
+    base.linker_flavor = LinkerFlavor::Gnu(Cc::Yes, Lld::No);
+    base.linker = Some("x86_64-lilium-std-cc".into());
 
     Target {
         llvm_target: "x86_64-pc-lilium-std".into(),
