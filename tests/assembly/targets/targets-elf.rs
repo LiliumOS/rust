@@ -580,6 +580,9 @@
 //@ revisions: x86_64_lynx_lynxos178
 //@ [x86_64_lynx_lynxos178] compile-flags: --target x86_64-lynx-lynxos178
 //@ [x86_64_lynx_lynxos178] needs-llvm-components: x86
+//@ revisions: x86_64_pc_lilium_std
+//@ [x86_64_pc_lilium_std] compile-flags: --target x86_64-pc-lilium-std
+//@ [x86_64_pc_lilium_std] needs-llvm-components: x86
 //@ revisions: x86_64_pc_nto_qnx710
 //@ [x86_64_pc_nto_qnx710] compile-flags: --target x86_64-pc-nto-qnx710
 //@ [x86_64_pc_nto_qnx710] needs-llvm-components: x86
