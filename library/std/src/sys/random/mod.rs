@@ -111,6 +111,9 @@ cfg_select! {
         // FIXME: add random data generation to xous
         mod unsupported;
         pub use unsupported::{fill_bytes, hashmap_random_keys};
+    } else if #[cfg(target_os = "lilium")] {
+        mod lilium;
+        pub use lilium::fill_bytes;
     }
     _ => {}
 }

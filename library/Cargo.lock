@@ -154,6 +154,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "lilium-sys"
+version = "0.1.0"
+source = "git+https://github.com/LiliumOS/lilium-sys#69784e3e3ccdae43b747663ae065bf725c591036"
+dependencies = [
+ "cfg-if",
+ "rustc-std-workspace-core",
+]
+
+[[package]]
 name = "memchr"
 version = "2.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -331,6 +340,7 @@ dependencies = [
  "hashbrown",
  "hermit-abi",
  "libc",
+ "lilium-sys",
  "miniz_oxide",
  "moto-rt",
  "object",

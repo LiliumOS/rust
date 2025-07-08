@@ -60,6 +60,10 @@ cfg_select! {
         mod zkvm;
         pub use self::zkvm::*;
     }
+    target_os = "lilium" => {
+        mod lilium;
+        pub use self::lilium::*;
+    }
     _ => {
         mod unsupported;
         pub use self::unsupported::*;

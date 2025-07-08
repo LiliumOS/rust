@@ -74,6 +74,7 @@ cfg_select! {
         target_os = "wasi",
         target_os = "teeos",
         target_os = "trusty",
+        target_os = "lilium",
     ) => {
         mod unix;
     }
