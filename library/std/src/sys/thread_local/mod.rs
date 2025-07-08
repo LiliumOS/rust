@@ -173,6 +173,16 @@ pub(crate) mod key {
             pub(crate) use xous::destroy_tls;
             pub(super) use xous::{Key, get, set};
             use xous::{create, destroy};
+        } else if #[cfg(target_os = "lilium")] {
+            mod racy;
+            #[cfg(test)]
+            mod tests;
+            mod lilium;
+            pub(super) use racy::LazyKey;
+            pub(super) use lilium::{Key, set};
+            #[cfg(any(not(target_thread_local), test))]
+            pub(super) use lilium::get;
+            use lilium::{create, destroy};
         }
     }
 }

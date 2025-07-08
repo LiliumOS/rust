@@ -64,6 +64,9 @@ cfg_if::cfg_if! {
     } else if #[cfg(target_os = "zkvm")] {
         mod zkvm;
         pub use self::zkvm::*;
+    } else if #[cfg(target_os = "lilium")] {
+        mod lilium;
+        pub use self::lilium::*;
     } else {
         mod unsupported;
         pub use self::unsupported::*;
@@ -79,5 +82,5 @@ cfg_if::cfg_if! {
     }
 }
 
-#[cfg(not(target_os = "uefi"))]
+#[cfg(not(any(target_os = "uefi", target_os = "lilium")))]
 pub type RawOsError = i32;

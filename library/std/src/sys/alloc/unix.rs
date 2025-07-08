@@ -2,6 +2,19 @@ use super::{MIN_ALIGN, realloc_fallback};
 use crate::alloc::{GlobalAlloc, Layout, System};
 use crate::ptr;
 
+#[cfg(target_os = "lilium")]
+// libc (the crate) isn't linked but pretend we have it
+mod libc {
+    pub use crate::ffi::c_void;
+    unsafe extern "C" {
+        pub unsafe fn malloc(size: usize) -> *mut c_void;
+        pub unsafe fn free(ptr: *mut c_void);
+        pub unsafe fn calloc(size: usize, count: usize) -> *mut c_void;
+        pub unsafe fn realloc(ptr: *mut c_void, new_size: usize) -> *mut c_void;
+        pub unsafe fn aligned_alloc(align: usize, size: usize) -> *mut c_void;
+    }
+}
+
 #[stable(feature = "alloc_system_type", since = "1.28.0")]
 unsafe impl GlobalAlloc for System {
     #[inline]
@@ -68,6 +81,12 @@ cfg_if::cfg_if! {
         #[inline]
         unsafe fn aligned_malloc(layout: &Layout) -> *mut u8 {
             unsafe { libc::memalign(layout.align(), layout.size()) as *mut u8 }
+        }
+    } else if #[cfg(target_os = "lilium")] {
+        unsafe fn aligned_malloc(layout: &Layout) -> *mut u8 {
+            let layout = layout.pad_to_align(); // Lilium is not guaranteed to support undersized aligned_alloc
+
+            unsafe { libc::aligned_alloc(layout.align(), layout.size()) as *mut u8 }
         }
     } else {
         #[inline]

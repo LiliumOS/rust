@@ -74,6 +74,7 @@ cfg_if::cfg_if! {
         target_os = "wasi",
         target_os = "teeos",
         target_os = "trusty",
+        target_os = "lilium", // Lilium isn't UNIXy, but it has alloc/free
     ))] {
         mod unix;
     } else if #[cfg(target_os = "windows")] {
