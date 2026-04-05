@@ -186,7 +186,8 @@ pub(crate) mod key {
             pub(crate) use xous::destroy_tls;
             pub(super) use xous::{Key, get, set};
             use xous::{create, destroy};
-        } else if #[cfg(target_os = "lilium")] {
+        }
+        target_os = "lilium" => {
             mod racy;
             #[cfg(test)]
             mod tests;

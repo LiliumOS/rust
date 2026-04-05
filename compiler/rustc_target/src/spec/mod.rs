@@ -2022,7 +2022,9 @@ crate::target_spec_enum! {
         Windows = "windows",
         Xous = "xous",
         Zkvm = "zkvm",
+        Lilium = "lilium",
         Unknown = "unknown",
+
     }
     other_variant = Other;
 }
@@ -2054,6 +2056,8 @@ crate::target_spec_enum! {
         P3 = "p3",
         Uclibc = "uclibc",
         V5 = "v5",
+        Std = "std",
+        Kernel = "kernel",
         Unspecified = "",
     }
     other_variant = Other;

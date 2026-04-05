@@ -1,10 +1,10 @@
 use std::borrow::Cow;
 
-use crate::spec::{PanicStrategy, RelroLevel, SplitDebuginfo, TargetOptions, TlsModel, cvs};
+use crate::spec::{Os, PanicStrategy, RelroLevel, SplitDebuginfo, TargetOptions, TlsModel, cvs};
 
 pub(crate) fn opts() -> TargetOptions {
     TargetOptions {
-        os: "lilium".into(),
+        os: Os::Lilium,
         dynamic_linking: true,
         families: cvs!["lilium"],
         has_rpath: true,

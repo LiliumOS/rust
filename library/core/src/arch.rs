@@ -76,3 +76,20 @@ pub macro global_asm("assembly template", $(operands,)* $(options($(option),*))?
 pub fn breakpoint() {
     core::intrinsics::breakpoint();
 }
+
+/// Returns a pointer with an address that corresponds to the caller of the function that invoked the [`return_address()`]` function,
+/// or a null pointer if it cannot be determined. The pointer has no provenance, as if created by core::ptr::without_provenance. It cannot be used to read memory (other than ZSTs).
+///
+/// This is equivalent to the gcc `__builtin_return_address(0)` intrinsic.
+///
+/// ## Notes
+/// The value returned by the function depends highly on the architecture and compiler (including any options set).
+/// In particular, it is allowed to be wrong (particularily if inlining is involved), or even contain a nonsense value.
+/// The result of this macro must not be relied upon for soundness or correctness, only for debugging purposes.
+/// Formally, this function returns a pointer with a non-deterministic address and no provenance.
+///
+#[unstable(feature = "mem_return_address", issue = "none")]
+#[inline(always)]
+pub fn return_address() -> *const () {
+    core::intrinsics::return_address()
+}
