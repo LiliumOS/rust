@@ -77,7 +77,7 @@ pub fn breakpoint() {
     core::intrinsics::breakpoint();
 }
 
-/// Returns a pointer with an address that corresponds to the caller of the function that invoked the [`return_address()`]` function,
+/// Returns a pointer with an address that corresponds to the caller of the function that invoked the [`return_address()`] function,
 /// or a null pointer if it cannot be determined. The pointer has no provenance, as if created by core::ptr::without_provenance. It cannot be used to read memory (other than ZSTs).
 ///
 /// This is equivalent to the gcc `__builtin_return_address(0)` intrinsic.
